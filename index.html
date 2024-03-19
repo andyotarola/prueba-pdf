@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previsualizar PDF desde HTML</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <div id="contenido">
+    <h1>Ejemplo de PDF generado desde HTML</h1>
+    <p>Este es un párrafo de ejemplo que se incluirá en el PDF.</p>
+  </div>
+
+  <a href="#" id="previewPDF" target="_blank">Previsualizar PDF</a>
+
+  <script>
+    function generarYPrevisualizarPDF() {
+      // const element = document.getElementById('contenido');
+
+      const element = `
+      <style>
+            * {
+              font-family: "Arial", Monaco, monospace;
+              font-size: 12px;
+              font-weight: normal;
+              padding: 0px;
+            }
+    
+            .billing-container {
+                margin: 0 auto;
+                max-width: 295px;
+            }
+            .mb-15 {
+                margin-bottom: 15px;
+            }
+            .billing-header {
+                text-align: center;
+            }
+            .item-table {
+                border-bottom: 1px solid #979797;
+                text-align: center;
+                text-transform: uppercase;
+            }        
+            .border-bottom {
+                border-bottom: 1px solid #979797;
+            }        
+            .border-left {
+                border-bottom: 1px solid #979797;
+            }
+            .table-billing {
+                border: none;
+                margin-top: 20px;
+            }
+            .billing-header-bottom {
+                border-top: 1px solid #000;
+                border-bottom: 1px solid #000;
+                padding: 4px 0;
+                margin: 4px 0 8px;
+                text-align: center;
+            }
+            .billing-data p{
+                font-size: 13px;
+            }
+    
+            table {
+                border-collapse: collapse;
+            }
+    
+            thead > tr {
+                border-bottom: 1px solid grey;
+                border-top: 1px solid grey;
+            }
+    
+            thead > tr > th{
+                font-weight: 600;
+                padding: 2px 2px;
+            }
+    
+            thead {
+                display: table-row-group;
+            }
+    
+            tbody tr.border{
+                border-bottom: 1px solid grey;
+            }
+    
+            tbody tr.border td{
+                padding: 2px 2px;
+            }
+    
+            h1 {
+                font-size: 16px;
+                margin: 0;
+            }
+    
+            h3 {
+                font-size: 14px;
+                margin: 0;
+            }
+            h2 {
+                font-size: 14px;
+                margin: 0;
+            }
+    
+            p {
+                margin: 0px;
+            }
+    
+            strong {
+                font-weight: 600;
+            }
+    
+            table {
+                margin-top: 10px;
+                padding: 0px;
+            }
+    
+            td.td-padding-top {
+                padding-top: 6px;
+            }
+    
+            td.td-padding-bottom {
+                padding-bottom: 2px;
+            }
+    
+            .pd-right {
+                padding-right: 6px;
+            }
+    
+            .text-center {
+                text-align: center;
+            }
+    
+            .text-left {
+                text-align: left;
+            }
+    
+            .text-right {
+                text-align: right;
+            }
+            .saltodepagina {
+                page-break-after: always;
+            }
+        </style>
+        <div class="info-container">
+            <div class="text-center mb-15">
+                <img src="" style="width:180px;height:100px;text-align:center">
+            </div>
+            <div class="billing-container">
+                <div class="billing-header">
+                    
+                    <h1>PRUEBA DESARROLLO</h1>
+                    <h3>RUC: 20202020200</h3>
+                    <h3> </h3>
+                    <h3> </h3>
+                </div>   
+                <div class="billing-header-bottom"> 
+                    <h2>BOLETA DE VENTA</h2>
+                    <h2>BB01-00000126</h2>
+                </div>
+                <div class="billing-data">  
+                    <p style="margin-bottom: 5px">Fecha de Emisión: 13/03/2024 17:53</p>
+                    <p style="margin-bottom: 5px">Forma de Pago: Contado</p>
+                    <p style="margin-bottom: 5px; text-transform: capitalize;">Cliente: Cliente Genérico</p>
+                        
+                        
+                        
+                                <p style="margin-bottom: 5px">DNI: 00000000</p>
+                        
+                  <p style="margin-bottom: 5px">Dirección: </p>
+                  <p style="margin-bottom: 5px">Empleado: VENTAS 10 *</p>
+                  
+              </div>
+    
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <thead>
+                      <tr>
+                          <th>CANT.</th>
+                          <th>DESCRIPCIÓN</th>
+                          <th>P.V.</th>
+                          <th>P.T.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border">
+                            <td class="text-center td-padding-top">
+                                1
+                            </td>
+                            <td class="text-left td-padding-top">
+                                Producto 4 - UND
+                                - S/M
+                                - 4000
+                            </td> 
+                            <td class="text-right td-padding-top">
+                                11.00
+                            </td>
+                            <td class="text-right td-padding-top">
+                                11.00
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>            
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody>
+                      <tr>
+                          <td class="text-right"><strong>OP. GRAVADAS:</strong></td>
+                          <td class="text-right"><strong>S/ 9.32</strong></td>
+                      </tr>                
+                      <tr>
+                          <td class="text-right"><strong>IGV:</strong></td>
+                          <td class="text-right"><strong>S/ 1.68</strong></td>
+                      </tr>
+                      <tr>
+                          <td class="text-right"><strong>TOTAL A PAGAR:</strong></td>
+                          <td class="text-right"><strong>S/  11.00</strong></td>
+                      </tr>               
+                  </tbody>
+              </table>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody> 
+                      <tr>
+                          <td style="height:0px;"></td>
+                      </tr>               
+                      <tr>
+                          <td>son:</td>
+                          <td><strong>ONCE Y 00/100 SOLES</strong></td>
+                      </tr>
+                      <tr>
+                          <td style="height:0px;"></td>
+                      </tr> 
+                  </tbody>
+              </table>
+            </div>
+        </div>
+    <div style="page-break-after: always;"></div>
+      `
+      
+      const options = {
+        filename: 'documento.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+
+      html2pdf().from(element).set(options).toPdf().get('pdf').then(function(pdf) {
+        const pdfBlob = new Blob([pdf.output('blob')], { type: 'application/pdf' });
+
+        const blobUrl = URL.createObjectURL(pdfBlob);
+
+        const previewLink = document.getElementById('previewPDF');
+        previewLink.href = blobUrl;
+      });
+    }
+
+    generarYPrevisualizarPDF();
+  </script>
+</body>
+</html>
